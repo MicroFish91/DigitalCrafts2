@@ -109,56 +109,66 @@
 
 
 #Long-long vowels
-userInput = input("What phrase would you like to have long vowels? ")
+# userInput = input("What phrase would you like to have long vowels? ")
 
-vowels = ("A", "a", "E", "e", "I", "i", "O", "o", "U", "u")
-vowelNumber = 0
-lastVowel = ""
-output = ""
+# vowels = ("A", "a", "E", "e", "I", "i", "O", "o", "U", "u")
+# vowelNumber = 0
+# lastVowel = ""
+# output = ""
     
-for character in userInput:
+# for character in userInput:
 
-    vowelCheck = False
+#     vowelCheck = False
 
-    for vowel in vowels:
+#     for vowel in vowels:
 
-        # Check if character is a vowel
-        if character == vowel:
-            vowelCheck = True
+#         # Check if character is a vowel
+#         if character == vowel:
+#             vowelCheck = True
 
-    # Next Sort the Logic....
-    # If we're not seeing a repea`t vowel
-    if character != lastVowel:
+#     # Next Sort the Logic....
+#     # If we're not seeing a repea`t vowel
+#     if character != lastVowel:
 
-        # If last vowel wasn't repeating, we still need to log it
-        if vowelNumber == 1:
-            output += lastVowel
-            lastVowel = ""
-            vowelNumber = 0
+#         # If last vowel wasn't repeating, we still need to log it
+#         if vowelNumber == 1:
+#             output += lastVowel
+#             lastVowel = ""
+#             vowelNumber = 0
 
-        # If just ending repeat vowel, need to log into output
-        if vowelNumber >= 2:
-            output += lastVowel * 5
-            lastVowel = ""
-            vowelNumber = 0
+#         # If just ending repeat vowel, need to log into output
+#         if vowelNumber >= 2:
+#             output += lastVowel * 5
+#             lastVowel = ""
+#             vowelNumber = 0
 
-        # Check to see if new character is a vowel
-        if vowelCheck:
-            vowelNumber += 1
-            lastVowel = character
-        # If not, it must be a consonant
-        else:
-            lastVowel = ""
-            vowelNumber = 0
-            output += character
+#         # Check to see if new character is a vowel
+#         if vowelCheck:
+#             vowelNumber += 1
+#             lastVowel = character
+#         # If not, it must be a consonant
+#         else:
+#             lastVowel = ""
+#             vowelNumber = 0
+#             output += character
 
-    # Else, it must be a repeat of the last vowel
-    else: 
-        vowelNumber += 1
-        lastVowel = character
+#     # Else, it must be a repeat of the last vowel
+#     else: 
+#         vowelNumber += 1
+#         lastVowel = character
                
     
-print(output)
+# print(output)
 
 
 # Multiplying Matrices 2x2
+matrixOne = [[2, -2], [5, 3]]
+matrixTwo = [[-1, 4], [7, -6]]
+
+matrixSubOne = [matrixOne[0][0] * matrixTwo[0][0] + matrixOne[0][1] * matrixTwo[1][0], matrixOne[0][0] * matrixTwo[0][1] + matrixOne[0][1] * matrixTwo[1][1]]
+
+matrixSubTwo = [matrixOne[1][0] * matrixTwo[0][0] + matrixOne[1][1] * matrixTwo[1][0], matrixOne[1][0] * matrixTwo[0][1] + matrixOne[1][1] * matrixTwo[1][1]]
+
+outputMatrix = [matrixSubOne, matrixSubTwo]
+
+print(outputMatrix)
