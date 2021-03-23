@@ -1,0 +1,11 @@
+.navbar {
+    list-style-type: none
+}
+
+.navbar > li {
+    float: left
+}
+
+.navbar > li:not(:last-child) {
+    margin-right: 1rem;
+  }
