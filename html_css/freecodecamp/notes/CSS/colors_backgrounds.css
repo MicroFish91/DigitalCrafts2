@@ -14,8 +14,10 @@ body {
 
 #service-image {
     background-repeat: no-repeat;
-    /* background-size: top bottom left right; */
-    background-size: 50px 50px 50px 50px;
+    /* background-size: width, height; */
+    background-size: 25px 25px;
+    background-size: 50% 50%;
+    background-size: auto auto; /* Scales the background image such that intrinsic proportions are maintained */
     background-size: cover;  /* Resizes to fit whole background area, but will often distort the image resolution */
     background-size: contain; /* Tries to resize to fit the whole background area without distorting proportions of original image */
 }
