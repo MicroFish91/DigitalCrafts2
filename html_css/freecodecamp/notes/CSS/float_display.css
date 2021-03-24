@@ -1,0 +1,98 @@
+/* ++++++++++++++++++++++++++ */
+/* Primary Display - Method 1 */
+/* ++++++++++++++++++++++++++ */
+
+/* Float */
+#about-us-imnage {
+    float: left;
+    float: right;
+    float: inherit; /* Inherit parent float style */
+}
+
+/* Display */
+#about-us-imnage {
+    display: none; /* Makes an element not take up its normal block space */
+    display: inline-block; /* Brings block level elements inline while maintaining some of the original block spacing */
+    display: inline; /* Brings block level elements inline without maintaining some of the original block spacing */
+
+}
+
+
+/* ++++++++++++++++++++++++++ */
+/* Primary Display - Method 2 */
+/* ++++++++++++++++++++++++++ */
+
+/* Flexbox - Another way to display items*/
+/* A flexbox is split into two mains parts: Container, and contained items */
+
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+
+/*
+    Quick Reference - PARENT/CONTAINER Properties
+    1.  flex-direction: Establishes main axis direction (rows or columns)
+    2.  justify-content: Establishes alignment and spacing of items along main axis
+    3.  align-items: Establishes alignment and spacing of items along cross axis
+
+*/
+
+/* First set parents container with display: flex */
+
+.container {
+    display: *flex;
+    flex-direction: *row | row-reverse | *column | column-reverse; /* This establishes the main-axis - primarily laying out either in horizontal rows or vertical columns */
+    flex-wrap: nowrap | *wrap | wrap-reverse; /* By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property */
+    justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right.... + safe | unsafe; /* This defines the alignment and space of the items ALONG the main axis. */
+    align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end ... + safe | unsafe; /* Think of it as the justify-content version for the cross-axis (perpendicular to the main-axis) */
+    
+}
+
+/*
+    Quick Reference - CHILD/FLEX ITEM Properties
+    1.  order
+    2.  flex-grow: This dictates what amount of the available space inside the flex container the item should take up.
+    If all items have flex-grow set to 1, the remaining space in the container will be distributed equally to all children. 
+    If one of the children has a value of 2, the remaining space would take up twice as much space as the others (or it will try to, at least).
+    Think of setting up size ratios to determine the divying up of remaining space.
+    Default is 0 - which means it does not grow
+    3.  flex-shrink: This defines the rate of shrinkage.  Default value is 1.  Same idea as the ratio concept for flex-grow.
+    Setting value to 0 will cause the item to never shrink.
+    4.  flex-basis: This defines the default size of an element before the remaining space is distributed.
+    If set to 0, the extra space around content isn’t factored in. If set to auto, the extra space is distributed based on its flex-grow value.
+    5.  align-self: Overrides the container's default align-item value.
+*/
+
+/* Since a lot of these elements may be unique to individual flex elements, consider directly adding them into
+the html as individual style elements rather than globally to the class*/
+.container-item {
+    *order: 1;
+    flex-grow: 1;
+    flex-shrink: ;
+    flex-basis: 100px;
+    *flex: grow shrink basis; /* One Line Version */
+    *align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+
+
+/* Ordering flex items - default value is 0 */
+
+<div class="container-item" style="order: 3; 
+flex: 1 1 100px;
+" > Flex Item One </div>
+<div class="container-item" style="order: 1; 
+flex: 1 1 100px;
+" > Flex Item Two </div>
+<div class="container-item" style="order: 2; 
+flex: 1 1 100px;
+" > Flex Item Three </div>
+
+
+/* Nested Flexbox Example: */
+/* https://www.codecademy.com/courses/learn-css/lessons/learn-flexbox-l/exercises/nested-flex */
+
+
+
+
+/* ++++++++++++++++++++ */
+/* +++++++ Grid +++++++ */
+/* ++++++++++++++++++++ */
+
