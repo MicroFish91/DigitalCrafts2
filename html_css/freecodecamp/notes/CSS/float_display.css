@@ -96,3 +96,78 @@ flex: 1 1 100px;
 /* +++++++ Grid +++++++ */
 /* ++++++++++++++++++++ */
 
+/* https://css-tricks.com/snippets/css/complete-guide-grid/ */
+
+/* Quick Reference:
+
+    1.  Create grid layout using 'grid-template' in a grid container parent
+    2.  Manage overall layout using grid display item commands - 'justify-items', 'justify-content', 'align-items', 'align-content'
+    3.  Specify how many grid rows/columns each item takes
+
+*/
+
+/* Defining grid columns and rows */
+.grid-container {
+    display: grid;
+    grid-template-columns: 40px 50px auto 50px 40px; /* Example: 5 columns of defined width */
+    grid-template-rows: 25% 100px auto;  /* Example: 3 rows of a defined height */
+    
+    /* Can also define line names for cols and rows.  Example: */
+    grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+
+    /* The fr unit allows you to set the size of a track as a fraction of the free space of the grid container. 
+    For example, this will set each item to one third the width of the grid container: */
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* Shorthand - one command */
+    grid-template: <grid-template-rows> / <grid-template-columns>;
+
+}
+
+
+/* Grid Gap */
+.grid-container {
+    display: grid;
+    gap: <grid-row-gap> <grid-column-gap>;
+    gap: 15px 10px; /* Or you can also use: 'grid-gap'.  Each value signifies a line size */
+
+}
+
+/* Displaying grid items */
+/* 
+    1.  justify-items (moves items within cells):  Aligns grid items along the inline (row) axis
+    2.  align-items (moves items within cells): Aligns grid items along the block (column) axis
+    3.  justify-content (moves the grid itself): Sometimes the total size of your grid might be less than the size of its grid container.
+    In this case you can set the alignment of the grid within the grid container.
+    This property aligns the grid along the inline (row) axis
+    4.  align-content (moves the grid itself):  Sometimes the total size of your grid might be less than the size of its grid container. 
+    This property aligns the grid along the block (column) axis
+*/
+
+.grid-container {
+    display: grid;
+    justify-items: start | end | center | stretch;
+    align-items: start | end | center | stretch;
+    justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+    align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+}
+
+/* Child/Grid Item Properties */
+/* 
+    1.  grid-column: specify how many columns the specific item takes up
+    2.  grid-row: specify how many rows the specific item takes up
+*/
+
+
+/* 
+    1.  grid-column: <start-line> / <end-line>
+    2.  grid-row: <start-line> / <end-line>
+*/
+<div class="grid-item" style="
+grid-column: 1 / 3; /* or grid-column: 1 / span 2 */
+grid-row: 1 / 3; /* or grid-column: 1 / span 2*/
+"> Grid Item One </div>
+
+/* or you can use grid-area: */
+grid area: <row-start> / <column-start> / <row-end> / <column-end>
