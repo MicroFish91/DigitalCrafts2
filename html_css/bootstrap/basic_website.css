@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navbar-brand {
+    width: 100%;
+}
+
+.company-message {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 20vh;
+    width: 100%;
+    margin: 0;
+}
+
+.bullets-title {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 10vh;
+    width: 100%;
+    margin: 0;
+}
+
+.bullets-body {
+    display: flex;
+}
+
+.topic-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;       
+}
+
+.image-item {
+    width: 30%;
+    height: auto;
+}
