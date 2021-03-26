@@ -1,3 +1,44 @@
 body {
-    background-color: red;
+    background-color: rgb(255, 204, 0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(32, 85, 245);
+}
+
+
+/* Main Paragraph */
+h1 {
+    padding-left: 8rem;
+}
+.main-para {
+    color: rgb(87, 69, 0);
+}
+.main-para-text {
+    padding-left: 1rem;
+}
+
+
+
+/* Paragraph 1 */
+h2 {
+    padding-left: 15rem;
+}
+.para-1-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.para-1-item {
+    margin: 1rem;
+}
+#image-one {
+    width: 20vw; 
+    height: auto;
+}
+
+
+/* Paragraph 2 */
+.para-2 {
+    
 }
