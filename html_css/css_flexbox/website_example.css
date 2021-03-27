@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background: lightblue;
+    height: 10vh;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    background: plum;
+}
+
+.menu {
+    background: purple;
+    width: 33%;
+    border: 2px solid red;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-indent: 6em;
+    padding: 0;
+}
+
+.menu-items {
+    list-style: none;
+}
+
+.content {
+    background: plum;
+    width: 33%;
+}
+
+.ads {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: purple;
+    width: 33%;
+}
+
+.image-item {
+    width: 44%;
+    height: auto;
+}
