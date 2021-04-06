@@ -43,6 +43,9 @@
 #     print(i)
 #     i += 1
 
+# for x in range(1, 11):
+#     print(x)
+
 # NxN Square
 # oneRow = ''
 # numOfStars = int(input("How many rows in your square? "))
@@ -55,23 +58,23 @@
 
 
 # Print a Box
-fullStar = ''
-twoStar = ''
-width = int(input("Width? "))
-height = int(input("Height? "))
+# fullStar = ''
+# twoStar = ''
+# width = int(input("Width? "))
+# height = int(input("Height? "))
 
-for x in range(0, width, 1):
-    fullStar += '*'
+# for x in range(0, width, 1):
+#     fullStar += '*'
 
-for x in range(0, width - 2, 1):
-    twoStar += ' '
+# for x in range(0, width - 2, 1):
+#     twoStar += ' '
 
-twoStar = '*' + twoStar + '*'
+# twoStar = '*' + twoStar + '*'
 
-for x in range(0, height, 1):
-    if (x == 0) or (x == height - 1):
-        print(fullStar)
-    else:
-        print(twoStar)
+# for x in range(0, height, 1):
+#     if (x == 0) or (x == height - 1):
+#         print(fullStar)
+#     else:
+#         print(twoStar)
 
 
