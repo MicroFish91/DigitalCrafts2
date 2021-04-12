@@ -106,7 +106,7 @@ for character in userInputTwo:
 
 print(leetSpeak)
 
-# Long-long vowels: easy
+# Long-long vowels: easy but not comprehensive
 userInput = input("What phrase would you like to have long vowels? ")
 
 shortE = "ee"
@@ -125,7 +125,7 @@ if indexO > -1:
 
 print(userInput)
 
-#Long-long vowels: hard
+#Long-long vowels: hard but comprehensive
 userInput = input("What phrase would you like to have long vowels? ")
 
 vowels = ["E", "e", "O", "o"]
