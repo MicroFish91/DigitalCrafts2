@@ -13,7 +13,23 @@ def word_histogram(paragraph):
 
     return words
 
+def findLargest(keysArray, valuesArray, storageArray):
 
+    histogramIndex = 0
+    largestValue = valuesArray[0]
+    largestWord = keysArray[0]
+
+    for index, count in enumerate(valuesArray):
+
+        if count > largestValue:
+            largestValue = count
+            largestWord = keysArray[index]
+            histogramIndex = index
+
+    storageArray.append({largestWord: largestValue})
+
+    del keysArray[histogramIndex]
+    del valuesArray[histogramIndex]
 
 # Top 3 most appearing words and print them out
 def sort_histogram(histogram):
@@ -22,61 +38,12 @@ def sort_histogram(histogram):
 
     histogramKeys = list(histogram.keys())
     histogramValues = list(histogram.values())
-    histogramIndex = 0
 
-    largestValue = histogramValues[0]
-    largestWord = histogramKeys[0]
-
-    # First Pass
-    for index, count in enumerate(histogramValues):
-
-        if count > largestValue:
-            largestValue = count
-            largestWord = histogramKeys[index]
-            histogramIndex = index
-
-    topThree.append({largestWord: largestValue})
-
-    del histogramKeys[histogramIndex]
-    del histogramValues[histogramIndex]
-
-
-    # Second pass
-    largestValue = histogramValues[0]
-    largestWord = histogramKeys[0]
-    histogramIndex = 0
-
-    for index, count in enumerate(histogramValues):
-
-        if count > largestValue:
-            largestValue = count
-            largestWord = histogramKeys[index]
-            histogramIndex = index
-
-    topThree.append({largestWord: largestValue})
-
-    del histogramKeys[histogramIndex]
-    del histogramValues[histogramIndex]
-
-    # Third pass
-    largestValue = histogramValues[0]
-    largestWord = histogramKeys[0]
-    histogramIndex = 0
-
-    for index, count in enumerate(histogramValues):
-
-        if count > largestValue:
-            largestValue = count
-            largestWord = histogramKeys[index]
-            histogramIndex = index
-
-    topThree.append({largestWord: largestValue})
-
-    del histogramKeys[histogramIndex]
-    del histogramValues[histogramIndex]
+    # Looping 3 times to find top 3
+    for x in range(3):
+        findLargest(histogramKeys, histogramValues, topThree)
 
     print(topThree)
-
 
 
 
