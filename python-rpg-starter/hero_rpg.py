@@ -19,25 +19,22 @@ class Character():
 
 class Hero(Character):
 
-    def __init__(self, health, power):
-        super().__init__(health, power)
+    def __init__(self, health = 10, power = 5):
+        super().__init__(health, power) 
         self.name = "Hero"
 
 
 class Goblin(Character):
 
-    def __init__(self, health, power):
+    def __init__(self, health = 6, power = 2):
         super().__init__(health, power)
         self.name = "Goblin"
-        
-
-
     
 
 def main():
 
-    user = Hero(10, 5)
-    enemy = Goblin(6, 2)
+    user = Hero()
+    enemy = Goblin()
 
     while enemy.health > 0 and user.health > 0:
         print(f"{user.name} has {user.health} health and {user.power} power.")
