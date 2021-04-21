@@ -19,13 +19,16 @@ class Character():
 
 class Hero(Character):
 
+    # Just Inherits methods
     def __init__(self, health = 10, power = 5):
-        super().__init__(health, power) 
+        self.health = health
+        self.power = power
         self.name = "Hero"
 
 
 class Goblin(Character):
 
+    # Inherits methods and passes init variables
     def __init__(self, health = 6, power = 2):
         super().__init__(health, power)
         self.name = "Goblin"
