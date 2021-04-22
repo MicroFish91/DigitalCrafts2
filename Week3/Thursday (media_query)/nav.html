@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Big Screen */
+        nav{
+            background-color: rgb(39, 37, 37);
+            display: flex;
+            flex-direction: row;
+            color: white;
+            justify-content: space-between;
+        }
+        ul{
+            display: flex;
+            padding-right: 40px;
+        }
+        li{
+            list-style: none;
+            padding: 15px;
+        }
+
+        /* Small Screen */
+        @media screen and (max-width: 650px) {
+            nav{
+                background-color: rgb(39, 37, 37);
+                display: flex;
+                flex-direction: column;
+                color: white;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+            }
+            li{
+                list-style: none;
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Company Logo</li>
+        </ul>
+
+        <ul>
+            <li>About Us</li>
+            <li>Blogs</li>
+            <li>Shopping</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+</body>
+</html>
