@@ -1,0 +1,55 @@
+/* black - #000000  
+navy - #14213D
+gold - #FCA311  (accent)
+light gray - #E5E5E5 
+white = #FFFFFF */
+body{
+    margin: 0px;
+    padding: 0px;
+ }
+.bg-black{
+    background-color: black;
+}
+.bg-navy{
+    background-color: #14213D;
+}
+.bg-accent{
+    background-color: #FCA311;
+}
+.bg-lightGray{
+    background-color: #E5E5E5;
+}
+.txt-black{
+    color: black;
+}
+.txt-navy{
+    color: #14213D;
+}
+.txt-accent{
+    color: #FCA311;
+}
+
+/* Automatically styles any anchor immediately following a .txt-accent without having to explicitly declare */
+.txt-accent a{
+    color: #FCA311;
+}
+
+.txt-accent a:hover{
+    color: #E5E5E5;
+}
+
+.txt-lightGray{
+    color: #E5E5E5;
+}
+
+.ps-light {
+    background-color: white;
+    /* height: 550px; */
+    width: 100%;
+}
+
+.ps-gray {
+    background-color: #E5E5E5;
+    /* height: 550px; */
+    width: 100%;
+}
