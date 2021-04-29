@@ -1,0 +1,78 @@
+const companies = [
+    { name: "Company One", category: "Finance", start: 1981, end: 2003 },
+    { name: "Company Two", category: "Retail", start: 1992, end: 2008 },
+    { name: "Company Three", category: "Auto", start: 1999, end: 2007 },
+    { name: "Company Four", category: "Retail", start: 1989, end: 2010 },
+    { name: "Company Five", category: "Technology", start: 2009, end: 2014 },
+    { name: "Company Six", category: "Finance", start: 1987, end: 2010 },
+    { name: "Company Seven", category: "Auto", start: 1986, end: 1996 },
+    { name: "Company Eight", category: "Technology", start: 2011, end: 2016 },
+    { name: "Company Nine", category: "Retail", start: 1981, end: 1989 },
+];
+
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+// For loop v.1
+// for(let company of companies) {
+//     console.log(company);
+// }
+
+// companies.forEach(company => console.log(company));
+
+// const newArray = ages.map(age => age + 5);
+// console.log(newArray);
+
+// const newCompanies = companies.map(company => {
+//     company.end += 5;
+//     return company;
+// });
+// console.log(newCompanies);
+
+// const newAges = ages.filter(age => !(age % 2 == 0));
+// console.log(newAges);
+
+// const olderAges = ages.filter(age => age > 35 );
+// console.log(olderAges);
+
+
+// Map
+function map(array, operationFn){
+    let newArray = [];
+    for(let element of array){
+        newArray.push(operationFn(element));
+    }
+    return newArray;
+}
+
+let newArray = map(companies, company => {
+        company.end += 5;
+        return company;
+    });
+
+console.log(newArray);
+
+
+// For Each
+function forEach(array, operationFn){
+    for (let element of array){
+        operationFn(element);
+    }
+}
+
+forEach(companies, company => console.log(company));
+
+// Filter
+function filter(array, operationFn) {
+    let newArray = [];
+    for (let element of array){
+        if (operationFn(element)) newArray.push(element);
+    }
+    return newArray;
+}
+
+let filteredArray = filter(ages, age => age > 35);
+
+console.log(filteredArray);
+
+
+// Reducer
