@@ -76,3 +76,40 @@ console.log(filteredArray);
 
 
 // Reducer
+let testArray = [1, 2, 3, 4];
+let testArray2 = ["Secretary", "of", "State"];
+
+// Full version
+// function reduce(array, operationFn, initialValue){
+//     let accumulated = initialValue;
+//     for(let index = 0; index < array.length; index++){
+//         // operationFn(accumulated, element, index, array)
+//         accumulated = operationFn(accumulated, array[index], index, array);
+//     }
+//     return accumulated;
+// }
+
+// Simplified but essentially same version
+function reduce(array, operationFn, initialValue){
+    let accumulated = initialValue;
+    for(let element of array){
+        accumulated = operationFn(accumulated, element);
+    }
+    return accumulated;
+}
+
+// Equivalent to calling testArray.reduce((accumulator, currentValue) => {
+//                                  return accumulator + currentValue;
+//                                  }, 0))
+let reducedArray = reduce(testArray, (accumulator, currentValue) => {
+    return accumulator + currentValue;
+  }, 0);
+
+console.log('reduced1: ', reducedArray);
+
+reducedArray = reduce(testArray2, (accumulator, currentValue) => {
+    return accumulator + currentValue[0];
+  }, "");
+
+console.log('reduced2: ', reducedArray);
+
