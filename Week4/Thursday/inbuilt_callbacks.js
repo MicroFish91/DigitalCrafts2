@@ -80,14 +80,14 @@ let testArray = [1, 2, 3, 4];
 let testArray2 = ["Secretary", "of", "State"];
 
 // Full version
-// function reduce(array, operationFn, initialValue){
-//     let accumulated = initialValue;
-//     for(let index = 0; index < array.length; index++){
-//         // operationFn(accumulated, element, index, array)
-//         accumulated = operationFn(accumulated, array[index], index, array);
-//     }
-//     return accumulated;
-// }
+function reduce(array, operationFn, initialValue){
+    let accumulated = initialValue;
+    for(let index = 0; index < array.length; index++){
+        // operationFn(accumulated, element, index, array)
+        accumulated = operationFn(accumulated, array[index], index, array);
+    }
+    return accumulated;
+}
 
 // Simplified but essentially same version
 function reduce(array, operationFn, initialValue){
