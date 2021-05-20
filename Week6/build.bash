@@ -1,0 +1,1 @@
+cd js && echo -e "const APIKEY='myKey1234'" > test.js
