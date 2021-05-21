@@ -100,7 +100,7 @@ const bodyParser = url => {
       });
       res.on('error', err => {
         reject(err);
-      }
+      })
     });
   })
 }
