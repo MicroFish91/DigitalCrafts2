@@ -1,16 +1,9 @@
-/*
-Change code to match output.
-
-*/
-
 var i = 10;
 
-for (var i = 0; i < 5; i++) {
+for (let i = 0; i < 5; i++) {
     //some stuff
 }
 
-console.log(i);
-
-//Before: 5 
-// After: 10
-
+// With the for loop i set to var, we get 5
+// With the for loop i set to let, we get 10
+console.log(i);  
