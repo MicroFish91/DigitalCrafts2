@@ -13,6 +13,7 @@ const AddressBook = () => {
   const [toggleAdd, setToggleAdd] = useState(false);
   const [toggleFavorites, setToggleFavorites] = useState(false);
 
+  // Populate default address book data upon component mounting
   useEffect(() => {
     const newContactList = defaultContacts.contacts;
     const sortedContactList = newContactList.sort(sortFn);
@@ -22,6 +23,7 @@ const AddressBook = () => {
     setFavorites(sortedFavoritesList);
   }, []);
 
+  // Add a new contact through the AddContactForm
   const addContact = (newContact, favorite) => {
     const newContactList = [newContact, ...contacts];
     const newSortedContacts = newContactList.sort(sortFn);
@@ -57,6 +59,7 @@ const AddressBook = () => {
     );
   }
 
+  // Update Existing Contact - Favorites
   const updateFavorites = (userId, favorite) => {
     const newContacts = [...contacts];
     let newFavorites = [...favorites];
@@ -75,8 +78,26 @@ const AddressBook = () => {
     setFavorites(newFavorites);
   }
 
+  // Delete Existing Contact
+  const deleteFavorites = (userId, favorite) => {
+    const newContacts = [...contacts];
+    const contactsIndex = contacts.findIndex(contact => contact.id === userId);
+    newContacts.splice(contactsIndex, 1);
+
+    if(favorite){
+      const newFavorites = [...favorites];
+      const favoritesIndex = favorites.findIndex(contact => contact.id === userId);
+      newFavorites.splice(favoritesIndex, 1);
+      setFavorites(newFavorites);
+    }
+
+    setContacts(newContacts);
+  }
+
+  // Consolidate methods for updating existing contact information
   const update = {
-    favorites: updateFavorites
+    favorites: updateFavorites,
+    delete: deleteFavorites
   }
 
   return (
