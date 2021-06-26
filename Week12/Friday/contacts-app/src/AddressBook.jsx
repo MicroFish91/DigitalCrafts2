@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import './AddressBook.css';
 import AddContactForm from './Components/AddContactForm';
 import Contacts from './Components/Contacts';
+import defaultContacts from './data/default.json';
+import sortFn from './helpers/sortFn';
 
 const AddressBook = () => {
   const [contacts, setContacts] = useState([]);
@@ -10,21 +13,30 @@ const AddressBook = () => {
   const [toggleAdd, setToggleAdd] = useState(false);
   const [toggleFavorites, setToggleFavorites] = useState(false);
 
+  useEffect(() => {
+    const newContactList = defaultContacts.contacts;
+    const sortedContactList = newContactList.sort(sortFn);
+    const favoritesList = newContactList.filter(contact => contact.favorite);
+    const sortedFavoritesList = favoritesList.sort(sortFn);
+    setContacts(sortedContactList);
+    setFavorites(sortedFavoritesList);
+  }, []);
+
   const addContact = (newContact, favorite) => {
     const newContactList = [newContact, ...contacts];
-    const newSortedContacts = newContactList.sort((a, b) => a.name - b.name);
+    const newSortedContacts = newContactList.sort(sortFn);
     setContacts(newSortedContacts);
 
     if(favorite){
       const newFavoritesList = [newContact, ...favorites];
-      const newSortedFavorites = newFavoritesList.sort((a, b) => a.name - b.name);
+      const newSortedFavorites = newFavoritesList.sort(sortFn);
       setFavorites(newSortedFavorites);
     }
   }
 
   const renderSearchBar = () => {
     return (
-      <Form className="offset-2 col-8 offset-2">
+      <Form className="SearchBar offset-2 col-8 offset-2 p-2 mt-1">
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Control value={search} onChange={e => setSearch(e.target.value)} type="text" placeholder="Search Contacts" />
         </Form.Group>
@@ -33,11 +45,11 @@ const AddressBook = () => {
         </Button>
         {
         (!toggleFavorites) ? 
-         <Button onClick={e => setToggleAdd(!toggleFavorites)} className="m-1 bg-dark" variant="primary" size="md" active>
+         <Button onClick={e => setToggleFavorites(!toggleFavorites)} className="m-1 bg-dark" variant="primary" size="md" active>
             Show Favorites
          </Button> 
           :
-         <Button onClick={e => setToggleAdd(!toggleFavorites)} className="m-1 bg-dark" variant="primary" size="md" active>
+         <Button onClick={e => setToggleFavorites(!toggleFavorites)} className="m-1 bg-dark" variant="primary" size="md" active>
             Show All
          </Button>
         }
@@ -45,12 +57,35 @@ const AddressBook = () => {
     );
   }
 
+  const updateFavorites = (userId, favorite) => {
+    const newContacts = [...contacts];
+    let newFavorites = [...favorites];
+    const contactsIndex = contacts.findIndex(contact => contact.id === userId);
+    const favoritesIndex = favorites.findIndex(contact => contact.id === userId);
+    newContacts[contactsIndex].favorite = !newContacts[contactsIndex].favorite;
+
+    if(favorite){
+      newFavorites.splice(favoritesIndex, 1);
+    } else {
+      newFavorites.push(newContacts.slice(contactsIndex, contactsIndex + 1)[0]);
+      newFavorites = newFavorites.sort(sortFn);
+    }
+
+    setContacts(newContacts);
+    setFavorites(newFavorites);
+  }
+
+  const update = {
+    favorites: updateFavorites
+  }
+
   return (
-    <div className="container">
+    <div className="container mt-3">
       <div className="row">
-        <h1 className="offset-4 col-4 offset-4 text-center">Contact List</h1>
-          {(!toggleAdd) ? renderSearchBar() : <AddContactForm addContact={addContact} setToggleAdd={setToggleAdd} />}
-          {(!toggleFavorites) ? <Contacts contacts={contacts} /> : <Contacts contacts={favorites} />}
+        <h1 className="offset-2 col-8 offset-2 text-center p-2 mt-2">Contact List</h1>
+          {(!toggleAdd) ? renderSearchBar() : <AddContactForm addContact={addContact} setToggleAdd={setToggleAdd} />} <br />
+          {(!toggleAdd) ? ((!toggleFavorites) ? <Contacts contacts={contacts} update={update} /> : 
+                            <Contacts contacts={favorites} update={update} />) : null}
       </div>
     </div>
   );

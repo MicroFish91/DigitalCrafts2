@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
+import './AddContactForm.css';
 
 const AddContactForm = ({ addContact, setToggleAdd }) => {
   const [name, setName] = useState("");
@@ -16,6 +18,7 @@ const AddContactForm = ({ addContact, setToggleAdd }) => {
     e.preventDefault();
 
     const newContact = {
+      id: uuidv4(),
       name,
       phone,
       email,
@@ -23,7 +26,8 @@ const AddContactForm = ({ addContact, setToggleAdd }) => {
       addressTwo,
       city,
       state,
-      zip
+      zip,
+      favorite
     }
 
     addContact(newContact, favorite);
@@ -31,7 +35,7 @@ const AddContactForm = ({ addContact, setToggleAdd }) => {
   }
 
   return (
-    <Form className="offset-2 col-8 offset-2" onSubmit={handleSubmit} >
+    <Form className="AddContactForm offset-2 col-8 offset-2 p-3" onSubmit={handleSubmit} >
       <Form.Row>
         <Form.Group className="col-12" controlId="formGridName">
           <Form.Label>Name</Form.Label>
