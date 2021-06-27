@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import './AddContactForm.css';
 
-const AddContactForm = ({ addContact, setToggleAdd }) => {
+const AddContactForm = ({ addContact, contact, toggleEdit }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -16,9 +16,16 @@ const AddContactForm = ({ addContact, setToggleAdd }) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    let id = uuidv4();
+    let exists = false;
 
+    if(contact !== null){
+      id = contact.id;
+      exists = true;
+    } 
+    
     const newContact = {
-      id: uuidv4(),
+      id: id,
       name,
       phone,
       email,
@@ -30,8 +37,13 @@ const AddContactForm = ({ addContact, setToggleAdd }) => {
       favorite
     }
 
-    addContact(newContact, favorite);
-    setToggleAdd(false);
+    if(!exists){
+      addContact.add(newContact, favorite);
+      addContact.setToggle(false);
+    } else {
+      addContact.update(newContact, favorite);
+      toggleEdit(false);
+    }    
   }
 
   return (
@@ -93,7 +105,7 @@ const AddContactForm = ({ addContact, setToggleAdd }) => {
         Submit
       </Button>
 
-      <Button onClick={(e) => setToggleAdd(false)} className="bg-dark m-1" variant="dark">
+      <Button onClick={(e) => addContact.setToggle(false)} className="bg-dark m-1" variant="dark">
         Cancel
       </Button>
     </Form>

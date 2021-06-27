@@ -2,10 +2,10 @@ import React from 'react';
 import Contact from './Contact';
 import './Contacts.css';
 
-const Contacts = ({ contacts, update }) => {
+const Contacts = ({ addContact, contacts, update }) => {
   const renderContacts = () => {
     return contacts.map((contact, index) => {
-      return <Contact key={index} contact={contact} update={update} />
+      return <Contact addContact={addContact} key={index} contact={contact} update={update} />
     });
   }
 

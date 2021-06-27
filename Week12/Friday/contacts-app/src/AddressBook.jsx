@@ -34,6 +34,23 @@ const AddressBook = () => {
       const newSortedFavorites = newFavoritesList.sort(sortFn);
       setFavorites(newSortedFavorites);
     }
+    setToggleAdd(false);
+  }
+
+  // Delete Existing Contact
+  const deleteFavorites = (userId, favorite) => {
+    const newContacts = [...contacts];
+    const contactsIndex = contacts.findIndex(contact => contact.id === userId);
+    newContacts.splice(contactsIndex, 1);
+
+    if(favorite){
+      const newFavorites = [...favorites];
+      const favoritesIndex = favorites.findIndex(contact => contact.id === userId);
+      newFavorites.splice(favoritesIndex, 1);
+      setFavorites(newFavorites);
+    }
+
+    setContacts(newContacts);
   }
 
   const renderSearchBar = () => {
@@ -78,35 +95,58 @@ const AddressBook = () => {
     setFavorites(newFavorites);
   }
 
-  // Delete Existing Contact
-  const deleteFavorites = (userId, favorite) => {
+  // Update Existing Contact Info
+  const updateExistingContact = (newContact, favorite) => {
     const newContacts = [...contacts];
-    const contactsIndex = contacts.findIndex(contact => contact.id === userId);
-    newContacts.splice(contactsIndex, 1);
+    let newFavorites = [...favorites];
+    const contactsIndex = contacts.findIndex(contact => contact.id === newContact.id);
+    const favoritesIndex = favorites.findIndex(contact => contact.id === newContact.id);
 
-    if(favorite){
-      const newFavorites = [...favorites];
-      const favoritesIndex = favorites.findIndex(contact => contact.id === userId);
+    newContacts.splice(contactsIndex, 1);
+    if(favoritesIndex !== -1){
       newFavorites.splice(favoritesIndex, 1);
-      setFavorites(newFavorites);
     }
 
-    setContacts(newContacts);
+    newContacts.push(newContact);
+    if(favorite){
+      newFavorites.push(newContact);
+    }
+
+    const sortedContacts = newContacts.sort(sortFn);
+    const sortedFavorites = newFavorites.sort(sortFn);
+
+    setContacts(sortedContacts);
+    setFavorites(sortedFavorites);
   }
 
   // Consolidate methods for updating existing contact information
-  const update = {
+  const addData = {
+    add: addContact,
+    update: updateExistingContact,
+    setToggle: setToggleAdd
+  }
+
+  // Consolidate methods for updating existing contact information
+  const updateContact = {
     favorites: updateFavorites,
     delete: deleteFavorites
   }
+
+  const filteredContacts = contacts.filter(contact => {
+    return contact.name.toLowerCase().includes(search.toLowerCase());
+  })
+
+  const filteredFavorites = favorites.filter(contact => {
+    return contact.name.toLowerCase().includes(search.toLowerCase());
+  })
 
   return (
     <div className="container mt-3">
       <div className="row">
         <h1 className="offset-2 col-8 offset-2 text-center p-2 mt-2">Contact List</h1>
-          {(!toggleAdd) ? renderSearchBar() : <AddContactForm addContact={addContact} setToggleAdd={setToggleAdd} />} <br />
-          {(!toggleAdd) ? ((!toggleFavorites) ? <Contacts contacts={contacts} update={update} /> : 
-                            <Contacts contacts={favorites} update={update} />) : null}
+          {(!toggleAdd) ? renderSearchBar() : <AddContactForm addContact={addData} contact={null} toggleEdit={null} />} <br />
+          {(!toggleAdd) ? ((!toggleFavorites) ? <Contacts addContact={addData} contacts={filteredContacts} update={updateContact} /> : 
+                            <Contacts addContact={addData} contacts={filteredFavorites} update={updateContact} />) : null}
       </div>
     </div>
   );

@@ -15,6 +15,10 @@
   margin-left: 1em;
 }
 
+.Contact-info:hover {
+  text-decoration: underline;
+}
+
 .Contact-short {
   display: flex;
   justify-content: space-between;
