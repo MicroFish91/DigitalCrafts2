@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import App from './App';
 import reducer from './Reducers/counterReducer';
 
+// store
 let store = createStore(reducer);
 
 ReactDOM.render(
